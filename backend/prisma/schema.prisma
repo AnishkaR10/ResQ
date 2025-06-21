@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Report {
+  id          String       @id @default(cuid())
+  title       String
+  description String?
+  category    String       // "theft", "vandalism", "assault", etc.
+  latitude    Float
+  longitude   Float
+  address     String?
+  photoUrl    String?
+  contactInfo String?
+  status      ReportStatus @default(PENDING)
+  region      String?      // Made nullable to handle existing data
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@map("reports")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ReportStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
