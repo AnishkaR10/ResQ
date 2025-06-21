@@ -55,7 +55,7 @@
 | Layer      | Tech Used                         |
 |------------|-----------------------------------|
 | Frontend   | Next.js, Tailwind CSS, Leaflet    |
-| Backend    | NestJS, Prisma, PostgreSQL        |
+| Backend    | NestJS, TypeScript, Prisma, PostgreSQL        |
 | Analytics  | Chart.js, Recharts               |
 | Auth       | JWT                               |
 | AI Assistant | Google Gemini API KEY   |
